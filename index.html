@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Muslim Prayer Times - IslamicHub</title>
+    <meta name="description"
+        content="Accurate Muslim prayer times for your location. View daily prayers, nafl prayers, and forbidden times with beautiful Islamic design.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Amiri:wght@400;700&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="index.css">
+</head>
+
+<body>
+    <div class="background-pattern"></div>
+
+    <div class="container">
+        <!-- Header -->
+        <header class="header">
+            <div class="header-content">
+                <div class="logo-section">
+                    <div class="logo-icon">🕌</div>
+                    <h1 class="app-title">IslamicHub</h1>
+                </div>
+                <button class="settings-btn" id="settingsBtn" aria-label="Settings">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <circle cx="12" cy="12" r="3"></circle>
+                        <path d="M12 1v6m0 6v6m0-6h6M12 7H6m12 5h-6m-6 0H0"></path>
+                        <path
+                            d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z">
+                        </path>
+                    </svg>
+                </button>
+            </div>
+
+            <!-- Location Bar -->
+            <div class="location-bar">
+                <div class="location-info" id="locationInfo">
+                    <svg class="location-icon" width="20" height="20" viewBox="0 0 24 24" fill="none"
+                        stroke="currentColor" stroke-width="2">
+                        <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
+                        <circle cx="12" cy="10" r="3"></circle>
+                    </svg>
+                    <span id="locationText">Detecting location...</span>
+                </div>
+                <button class="change-location-btn" id="changeLocationBtn">Change</button>
+            </div>
+
+            <!-- Date and Hijri -->
+            <div class="date-section">
+                <div class="gregorian-date" id="gregorianDate"></div>
+                <div class="hijri-date" id="hijriDate"></div>
+            </div>
+        </header>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            <div class="prayer-grid">
+                <!-- Daily Prayers -->
+                <div class="prayer-card daily-prayers">
+                    <div class="card-header">
+                        <span class="card-icon">🕌</span>
+                        <h2 class="card-title">Daily Prayers</h2>
+                    </div>
+                    <div class="prayer-list" id="dailyPrayers">
+                        <div class="prayer-item loading-shimmer"></div>
+                        <div class="prayer-item loading-shimmer"></div>
+                        <div class="prayer-item loading-shimmer"></div>
+                        <div class="prayer-item loading-shimmer"></div>
+                        <div class="prayer-item loading-shimmer"></div>
+                        <div class="prayer-item loading-shimmer"></div>
+                    </div>
+                </div>
+
+                <!-- Nafl Prayers -->
+                <div class="prayer-card nafl-prayers">
+                    <div class="card-header">
+                        <span class="card-icon">✨</span>
+                        <h2 class="card-title">Nafl Prayers</h2>
+                    </div>
+                    <div class="prayer-list" id="naflPrayers">
+                        <div class="prayer-item loading-shimmer"></div>
+                        <div class="prayer-item loading-shimmer"></div>
+                        <div class="prayer-item loading-shimmer"></div>
+                        <div class="prayer-item loading-shimmer"></div>
+                        <div class="prayer-item loading-shimmer"></div>
+                    </div>
+                </div>
+
+                <!-- Forbidden Times -->
+                <div class="prayer-card forbidden-times">
+                    <div class="card-header warning">
+                        <span class="card-icon">⚠️</span>
+                        <h2 class="card-title">Forbidden (Makrooh)</h2>
+                    </div>
+                    <div class="prayer-list" id="forbiddenTimes">
+                        <div class="prayer-item loading-shimmer"></div>
+                        <div class="prayer-item loading-shimmer"></div>
+                        <div class="prayer-item loading-shimmer"></div>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <!-- Settings Modal -->
+    <div class="modal" id="settingsModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>Settings</h2>
+                <button class="close-btn" id="closeSettingsBtn">&times;</button>
+            </div>
+            <div class="modal-body">
+                <div class="setting-group">
+                    <label for="calculationMethod">Calculation Method</label>
+                    <select id="calculationMethod" class="setting-select">
+                        <option value="2">Islamic Society of North America (ISNA)</option>
+                        <option value="3" selected>Muslim World League (MWL)</option>
+                        <option value="4">Umm Al-Qura University, Makkah</option>
+                        <option value="5">Egyptian General Authority of Survey</option>
+                        <option value="1">University of Islamic Sciences, Karachi</option>
+                        <option value="7">Institute of Geophysics, University of Tehran</option>
+                        <option value="8">Gulf Region</option>
+                        <option value="9">Kuwait</option>
+                        <option value="10">Qatar</option>
+                        <option value="11">Majlis Ugama Islam Singapura, Singapore</option>
+                        <option value="12">Union Organization islamic de France</option>
+                        <option value="13">Diyanet İşleri Başkanlığı, Turkey</option>
+                        <option value="14">Spiritual Administration of Muslims of Russia</option>
+                    </select>
+                </div>
+                <div class="setting-group">
+                    <label for="asrMethod">Asr Calculation Method</label>
+                    <select id="asrMethod" class="setting-select">
+                        <option value="0" selected>Standard (Shafi'i, Maliki, Hanbali)</option>
+                        <option value="1">Hanafi</option>
+                    </select>
+                </div>
+                <div class="setting-group">
+                    <label for="timeFormat">Time Format</label>
+                    <select id="timeFormat" class="setting-select">
+                        <option value="12">12 Hour</option>
+                        <option value="24">24 Hour</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Location Modal -->
+    <div class="modal" id="locationModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>Change Location</h2>
+                <button class="close-btn" id="closeLocationBtn">&times;</button>
+            </div>
+            <div class="modal-body">
+                <div class="setting-group">
+                    <label for="citySelect">Select City</label>
+                    <select id="citySelect" class="setting-select">
+                        <option value="current">📍 Use Current Location</option>
+                        <optgroup label="North America">
+                            <option value="New York,USA">New York, USA</option>
+                            <option value="Los Angeles,USA">Los Angeles, USA</option>
+                            <option value="Chicago,USA">Chicago, USA</option>
+                            <option value="Houston,USA">Houston, USA</option>
+                            <option value="Toronto,Canada">Toronto, Canada</option>
+                            <option value="Mexico City,Mexico">Mexico City, Mexico</option>
+                        </optgroup>
+                        <optgroup label="Europe">
+                            <option value="London,UK">London, UK</option>
+                            <option value="Paris,France">Paris, France</option>
+                            <option value="Berlin,Germany">Berlin, Germany</option>
+                            <option value="Madrid,Spain">Madrid, Spain</option>
+                            <option value="Rome,Italy">Rome, Italy</option>
+                            <option value="Amsterdam,Netherlands">Amsterdam, Netherlands</option>
+                            <option value="Brussels,Belgium">Brussels, Belgium</option>
+                            <option value="Vienna,Austria">Vienna, Austria</option>
+                        </optgroup>
+                        <optgroup label="Middle East">
+                            <option value="Mecca,Saudi Arabia">Mecca, Saudi Arabia</option>
+                            <option value="Medina,Saudi Arabia">Medina, Saudi Arabia</option>
+                            <option value="Riyadh,Saudi Arabia">Riyadh, Saudi Arabia</option>
+                            <option value="Jeddah,Saudi Arabia">Jeddah, Saudi Arabia</option>
+                            <option value="Dubai,UAE">Dubai, UAE</option>
+                            <option value="Abu Dhabi,UAE">Abu Dhabi, UAE</option>
+                            <option value="Doha,Qatar">Doha, Qatar</option>
+                            <option value="Kuwait City,Kuwait">Kuwait City, Kuwait</option>
+                            <option value="Istanbul,Turkey">Istanbul, Turkey</option>
+                            <option value="Ankara,Turkey">Ankara, Turkey</option>
+                            <option value="Tehran,Iran">Tehran, Iran</option>
+                            <option value="Baghdad,Iraq">Baghdad, Iraq</option>
+                            <option value="Damascus,Syria">Damascus, Syria</option>
+                            <option value="Beirut,Lebanon">Beirut, Lebanon</option>
+                            <option value="Amman,Jordan">Amman, Jordan</option>
+                            <option value="Jerusalem,Palestine">Jerusalem, Palestine</option>
+                        </optgroup>
+                        <optgroup label="Africa">
+                            <option value="Cairo,Egypt">Cairo, Egypt</option>
+                            <option value="Alexandria,Egypt">Alexandria, Egypt</option>
+                            <option value="Casablanca,Morocco">Casablanca, Morocco</option>
+                            <option value="Tunis,Tunisia">Tunis, Tunisia</option>
+                            <option value="Algiers,Algeria">Algiers, Algeria</option>
+                            <option value="Lagos,Nigeria">Lagos, Nigeria</option>
+                            <option value="Nairobi,Kenya">Nairobi, Kenya</option>
+                            <option value="Cape Town,South Africa">Cape Town, South Africa</option>
+                        </optgroup>
+                        <optgroup label="Asia">
+                            <option value="Jakarta,Indonesia">Jakarta, Indonesia</option>
+                            <option value="Kuala Lumpur,Malaysia">Kuala Lumpur, Malaysia</option>
+                            <option value="Singapore,Singapore">Singapore, Singapore</option>
+                            <option value="Bangkok,Thailand">Bangkok, Thailand</option>
+                            <option value="Karachi,Pakistan">Karachi, Pakistan</option>
+                            <option value="Lahore,Pakistan">Lahore, Pakistan</option>
+                            <option value="Islamabad,Pakistan">Islamabad, Pakistan</option>
+                            <option value="Dhaka,Bangladesh">Dhaka, Bangladesh</option>
+                            <option value="Mumbai,India">Mumbai, India</option>
+                            <option value="Delhi,India">Delhi, India</option>
+                            <option value="Kolkata,India">Kolkata, India</option>
+                            <option value="Beijing,China">Beijing, China</option>
+                            <option value="Shanghai,China">Shanghai, China</option>
+                            <option value="Tokyo,Japan">Tokyo, Japan</option>
+                            <option value="Seoul,South Korea">Seoul, South Korea</option>
+                        </optgroup>
+                        <optgroup label="Oceania">
+                            <option value="Sydney,Australia">Sydney, Australia</option>
+                            <option value="Melbourne,Australia">Melbourne, Australia</option>
+                            <option value="Auckland,New Zealand">Auckland, New Zealand</option>
+                        </optgroup>
+                    </select>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+
+</html>

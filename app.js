@@ -280,12 +280,7 @@ function displayPrayerTimes() {
             timeRange: calculateChashtRange(times.Sunrise, times.Dhuhr),
             icon: '🌤️'
         },
-        {
-            name: 'Zawal',
-            time: calculateZawal(times.Dhuhr),
-            timeRange: calculateZawalRange(times.Dhuhr),
-            icon: '☀️'
-        },
+
         {
             name: 'Awwabin',
             time: calculateAwwabin(times.Maghrib, times.Isha),
